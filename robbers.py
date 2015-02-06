@@ -30,7 +30,7 @@ def findOptimalRobbingHitandHitIt (valuables) :
 	if maxindex >= 0:
 		#hit the house
 		hitValue = hitHouseAndSendTheCops (valuables, maxindex)
-		if hitValue > 0 and hitValue != 'x':
+		if hitValue > 0 :
 			return hitValue
 	return 0
 	
@@ -44,6 +44,8 @@ def hitHouseAndSendTheCops (valuables, houseIndex) :
 		valuables [houseIndex - 1] = 'x'
 	if houseIndex < (len(valuables) - 1) :
 		 valuables [houseIndex + 1] = 'x'
+	if t == 'x'
+		return 0
 	return t
 #def findBestValueDumbWay (valuables) :
 #	for i in xrange ( 0, len(valuables) ) :
