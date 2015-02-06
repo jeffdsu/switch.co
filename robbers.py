@@ -10,19 +10,20 @@ def findOptimalRobbingHitandHitIt (valuables) :
 	#-- first find how much each hit is worth.  this includes the money lost from the neigboaring houses
 	maxvalue = -1
 	maxindex = 0
-	hitworthPerHouse = [0] * len(valuables)
+	#hitworthPerHouse = [0] * len(valuables)
+	currentHitWorth = -1
 	for i in xrange ( 0, len(valuables) ) :
 		if valuables[i] != 'x' :
-			hitworthPerHouse [i] = valuables[i]
-			hitworthPerHouse [i] = hitworthPerHouse [i] - valuables[i+1] if i < (len(valuables) - 1) and valuables[i+1] != 'x' else hitworthPerHouse[i]
-			hitworthPerHouse [i] = hitworthPerHouse [i] - valuables[i-1] if i > 0 and valuables[i-1] !='x' else hitworthPerHouse[i]
+			currentHitWorth = valuables[i]
+			currentHitWorth = currentHitWorth - valuables[i+1] if i < (len(valuables) - 1) and valuables[i+1] != 'x' else currentHitWorth
+			currentHitWorth = currentHitWorth - valuables[i-1] if i > 0 and valuables[i-1] !='x' else currentHitWorth
 
 
 			#-- keep track of the maxvalue so I can hit the house afterwards
 			if i == 0 :
-				maxvalue = hitworthPerHouse [i]
-			elif maxvalue < hitworthPerHouse [i] :
-				maxvalue = hitworthPerHouse [i]
+				maxvalue = currentHitWorth
+			elif maxvalue < currentHitWorth :
+				maxvalue = currentHitWorth
 				maxindex = i
 
 
