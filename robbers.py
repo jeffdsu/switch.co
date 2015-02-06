@@ -30,7 +30,7 @@ def findOptimalRobbingHitandHitIt (valuables) :
 	if maxindex >= 0:
 		#hit the house
 		hitValue = hitHouseAndSendTheCops (valuables, maxindex)
-		if hitValue > 0 :
+		if hitValue > 0 and hitValue != 'x':
 			return hitValue
 	return 0
 	
@@ -57,6 +57,7 @@ a = [30, 50, 20, 1]
 a = [30, 50, 20, 1, 2]
 a = [30, 50, 50, 1, 2]
 a = [30, 50, 50, 1, 2, 50, 50, 50]
+a = [20, 50, 30, 20, 50, 20]
 #no matter what, the max amount houses that can be hit is len / 2
 for i in xrange(0, len(a) / 2 if len(a) % 2 == 0 else (len(a)+1)/2 ) :
 	totalHitWorth = totalHitWorth + findOptimalRobbingHitandHitIt(a)
