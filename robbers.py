@@ -3,7 +3,7 @@
 
 
 
-def findOptimalRobbingHit (valuables) :
+def findOptimalRobbingHitandHitIt (valuables) :
 	"""Returns the most optimal hit for robbers to take,  returns 0 when no more work can be done."""
 
 
@@ -28,14 +28,14 @@ def findOptimalRobbingHit (valuables) :
 
 	if maxindex >= 0:
 		#hit the house
-		hitValue = hitHouse (valuables, maxindex)
+		hitValue = hitHouseAndSendTheCops (valuables, maxindex)
 		if hitValue > 0 :
 			return hitValue
 	return 0
 	
 
 
-def hitHouse (valuables, houseIndex) :
+def hitHouseAndSendTheCops (valuables, houseIndex) :
 	"""Returns value of hit while sending the cops to clear the neighboring houeses"""
 	t = valuables [houseIndex]
 	valuables [houseIndex] = 'x'
@@ -58,7 +58,7 @@ a = [30, 50, 50, 1, 2]
 a = [30, 50, 50, 1, 2, 50, 50, 50]
 #no matter what, the max amount houses that can be hit is len / 2
 for i in xrange(0, len(a) / 2 if len(a) % 2 == 0 else (len(a)+1)/2 ) :
-	totalHitWorth = totalHitWorth + findOptimalRobbingHit(a)
+	totalHitWorth = totalHitWorth + findOptimalRobbingHitandHitIt(a)
 
 print "Best Hit : " + str(totalHitWorth)
 
