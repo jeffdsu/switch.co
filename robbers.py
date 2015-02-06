@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# findOpitmalRobbingHit will find the best house to hit and return the value of the house that was hit
-# return 0 when no more work to do
+
 
 def findOptimalRobbingHit (valuables) :
+	"""Returns the most optimal hit for robbers to take,  returns 0 when no more work can be done."""
+
 
 	#-- first find how much each hit is worth.  this includes the money lost from the neigboaring houses
 	maxvalue = -1
@@ -16,21 +17,26 @@ def findOptimalRobbingHit (valuables) :
 			hitworthPerHouse [i] = hitworthPerHouse [i] - valuables[i+1] if i < (len(valuables) - 1) and valuables[i+1] != 'x' else hitworthPerHouse[i]
 			hitworthPerHouse [i] = hitworthPerHouse [i] - valuables[i-1] if i > 0 and valuables[i-1] !='x' else hitworthPerHouse[i]
 
+
+			#-- keep track of the maxvalue so I can hit the house afterwards
 			if i == 0 :
 				maxvalue = hitworthPerHouse [i]
 			elif maxvalue < hitworthPerHouse [i] :
 				maxvalue = hitworthPerHouse [i]
 				maxindex = i
-	print str(maxindex) + ", "  + str(maxvalue) + " " +  str(hitworthPerHouse)
+
+
 	if maxindex >= 0:
+		#hit the house
 		hitValue = hitHouse (valuables, maxindex)
 		if hitValue > 0 :
 			return hitValue
 	return 0
 	
 
-#returns value of hit while sending the cops to clear the neighboring houeses
+
 def hitHouse (valuables, houseIndex) :
+	"""Returns value of hit while sending the cops to clear the neighboring houeses"""
 	t = valuables [houseIndex]
 	valuables [houseIndex] = 'x'
 	if houseIndex > 0 :
@@ -54,6 +60,6 @@ a = [30, 50, 50, 1, 2, 50, 50, 50]
 for i in xrange(0, len(a) / 2 if len(a) % 2 == 0 else (len(a)+1)/2 ) :
 	totalHitWorth = totalHitWorth + findOptimalRobbingHit(a)
 
-print totalHitWorth
+print "Best Hit : " + str(totalHitWorth)
 
 
