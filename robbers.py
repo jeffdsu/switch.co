@@ -44,7 +44,7 @@ def hitHouseAndSendTheCops (valuables, houseIndex) :
 		valuables [houseIndex - 1] = 'x'
 	if houseIndex < (len(valuables) - 1) :
 		 valuables [houseIndex + 1] = 'x'
-	if t == 'x'
+	if t == 'x':
 		return 0
 	return t
 #def findBestValueDumbWay (valuables) :
